@@ -1,6 +1,10 @@
 #include <iostream>
 #include <vector>
 /*
+Learning C++ before taking OOP software design lab. Understanding fundamentals; comments are notes.
+*/
+
+/*
 Unlike Java, C++ can operate overload such as +, -, *
 */
 namespace test{ // categorizes variables so that same name can be used as long as the name space is called
