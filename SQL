@@ -1,0 +1,40 @@
+Intro to SQL
+SQL is not space sensitive like Python is
+Strings are in single quotes. Important to note that double quotes do not work!
+SELECT keyword is used to return a result set of records, called a result-set, it limits the variables accessed to the ones listed
+  -Syntax: SELECT var, var from database
+  -selected variable can be modified in the declaration by operations even with other variables
+WHERE keyword is used to filter results only to a those listed
+  - Syntax: WHERE conditional
+  - without using WHERE and only using SELECT, it will list out all of the database
+  - WHERE can be used with conditionals to limit the database to desired premises
+
+IN keyword is used to check if an item is an list (much like the Python IN check)
+  -Syntax: var IN (data types)
+
+examples:
+
+SELECT name, population FROM world
+  WHERE name IN ('Sweden', 'Norway', 'Denmark');
+
+from a database called world, the variables name and population are accessed.
+using the keyword WHERE tells us the variable that is checking for, population can be checked if WHERE is called on population
+
+BETWEEN keyword allows ranges to searched and returns a result set
+  -Syntax: BETWEEN(num1,num2)
+LIKE keyword allows to search for strings, ints that are in a variable
+  -Syntax: LIKE '%SEARCH%'
+  -% in front means that it is at the end
+  -% after means that it is in front
+  -% in front and after means that it is anywhere
+  -
+
+example of LIKE:
+  SELECT name from world
+  WHERE name like '%EA%'
+
+same usage of and/or, <, >, =
+NOT keyword is used to do the opposite of a conditional much like Python
+
+ROUND rounds a number to a certain amount of decimals:
+  -Syntax: ROUND(float, int) where first float is the number being rounded and the int is how many decimals places
