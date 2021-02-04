@@ -1,0 +1,143 @@
+
+  class Node {
+    int data;
+    Node next;
+    Node(int value){
+      data = value;
+    }
+  }
+
+  class LinkedList{
+    Node head;
+    Node tail;
+    int length;
+  
+  LinkedList() {
+    this.head = null;
+    this.tail = null;
+    length = 0;
+  }
+
+  public void add(int val){
+    Node newval = new Node(val);
+    if(this.head == null){
+      this.head = newval;
+      this.tail = newval;
+  	}
+    else{
+  	newval.next = this.head;
+  	this.head = newval;
+    }
+  }
+  
+  public void addLast(int val){
+    Node newval = new Node(val);
+    if(this.head == null){
+      this.head = newval;
+      this.tail = newval;
+
+  	}
+    else{
+      this.tail.next = newval;
+      this.tail = newval;
+    }
+	
+  }
+  
+  public void printList(Node head) {
+	  System.out.print("List: ");
+	  for(Node cur = head; cur != null; cur = cur.next) {
+		  System.out.print(cur.data);
+	  }
+	  System.out.println();
+  }
+
+  /*
+  public void delete(Node a){
+    Node pointer = head;
+    while(pointer.equals(a)){
+pass;
+    }
+  }
+  */
+  
+  public static void main(String[] args) {
+  LinkedList test = new LinkedList();
+  System.out.println("Test #1: addLast");
+	test.addLast(1);
+	test.addLast(5);
+	test.addLast(9);
+	test.addLast(5);
+	test.printList(test.head);
+  }
+
+public static Node mergeSort(Node a, Node b){
+Node one = a;
+Node two = b;
+Node temp = new Node();
+while(one != null || two!= null){
+  if((one!=null && two==null) || one.value<=two.value){
+ans.addLast(one);
+one = one.next;
+  }
+  else(
+    ans.addLast(two);
+    two = two.next;
+  )
+}
+return temp;
+
+}
+
+public static LinkedList addTwoNumbers(Node a, Node b){
+  StringBuilder sb = new StringBuilder ();
+  StringBuilder sb2 = new StringBuilder ();
+  String one = "";
+  String two = "";
+  Node ans = new Node();
+  for(Node cur = a; cur != null; cur = cur.next){
+    sb.append(cur.value);
+  }
+  for(Node cur1 = b; cur1 != null; cur1 = cur1.next){
+	sb2.append(cur1.value);
+  }
+  one = sb.reverse();
+  two = sb.reverse();
+  
+  /*
+  1->6->3
+  3->6->1
+  4  2  5
+  
+  4 > 2 > 3
+
+  4 > 6 > 4
+  */
+  
+  int oneval = Integer.parseInt(one);
+  int twoval = Integer.parseInt(two);
+  int sum = oneval + twoval;
+  String temp = Integer.toString(sum);
+
+  Node temp = ans;
+  for(int i=temp.length; i>=0; i--){
+    temp.next = Integer.parseInt(sum.charAt(i));
+    temp = temp.next;
+  }
+  return ans;
+}
+public Node reverse(Node a){
+  
+  Node carrier = new Node();
+  Node ans = carrier;
+  while (a!=null){
+    Node temp = a;
+    while (temp.next!=null){
+      temp = temp.next; 
+    }
+    carrier.next = temp;
+       temp = null;
+      }
+    }
+  return ans;
+}
