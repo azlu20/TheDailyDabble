@@ -1,0 +1,78 @@
+class Main {
+  public static void main(String[] args) {
+    System.out.println("Hello world!");
+  }
+}
+
+void invertTree(Node root) {
+	if(root.left == null && root.right == null) {
+		return;
+	}
+
+	Node temp = root.left;
+	root.left = root.right;
+	root.right = temp;
+
+	invertTree(root->left);
+	invertTree(root->right);
+}
+
+public boolean getNodes(Node root, int cur, int sum){
+    if(cur == sum){
+        return true;
+    }
+    if(root.right == null && root.left == null){
+        return false;
+    }
+
+    else{
+        cur2 = cur;
+        if(root.right!= null){
+        cur += root.right.val;
+        boolean one = getNodes(root.right, cur, sum);
+        }
+        if(root.left)
+        cur2 += root.left.val;
+        boolean two = getNodes(root.left, cur2, sum);
+        if(one || two){
+            return true;
+        }
+    }
+    return false;
+
+}
+/*
+root.left
+root.right
+root.value
+*/
+Node findSum(Node root, int target) {
+	if(target == 0) {
+		return root;
+	}
+
+	if(root.left == null && root.right == null) {
+		if(target - root.value == 0)
+			return root;
+		else
+			return null;
+	}
+
+	findSum(root.left, target - root.left.value);
+	findSum(root.right, target - root.right.value);
+}
+/*
+    a 
+   b c
+ d e f g
+que = {b,c}
+[a, b, c, d, e, f, g]
+*/
+int counter = 0;
+
+void zigzag(Node root, int counter) {
+	ArrayList queue = new ArrayList();
+	System.out.print(root.value + " ");
+	queue.add(root.left);
+	queue.add(root.right);
+}
