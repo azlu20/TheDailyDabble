@@ -2,12 +2,12 @@ import requests
 import matplotlib.pyplot as plt
 import numpy as np
 
-key = "RGAPI-48a9c0e0-a3bf-4f6b-b242-ac3602906fd8"
+key = "OMITTED"
 wins = []
 for i in range(1, 10):
     page = str(i)
     response = requests.get(
-        f"https://br1.api.riotgames.com/lol/league-exp/v4/entries/RANKED_SOLO_5x5/SILVER/I?page={page}&api_key=RGAPI-ab40f9c6-58c4-427b-8724-062f168fb8a5")
+        f"https://br1.api.riotgames.com/lol/league-exp/v4/entries/RANKED_SOLO_5x5/SILVER/I?page={page}&api_key=OMITTED")
     for ele in response.json():
         cur = ele['wins']
         wins.append(cur)
