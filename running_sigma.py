@@ -63,39 +63,45 @@ class RunningStats:
 import numpy as np
 import matplotlib.pyplot as plt
 
-test = np.random.randint(-100000, 100000, 1000)
+iter_range = range(10, 1000)
+real_pred_diff = np.zeros(len(iter_range))
+for idx, j in enumerate(iter_range):
+    test = np.random.randint(-100000, 100000, j)
 
-real_variance = np.zeros(len(test))
-predicted_variance = np.zeros(len(test))
-real_diff = np.zeros(len(test))
-predicted_diff = np.zeros(len(test))
-sum = 0
-n = 0
-for index, i in enumerate(test):
-    oldsum = sum
-    sum += i
-    n += 1
-    mean = sum/(index+1)
+    real_variance = np.zeros(len(test))
+    predicted_variance = np.zeros(len(test))
+    real_diff = np.zeros(len(test))
+    predicted_diff = np.zeros(len(test))
+    sum = 0
+    n = 0
+    for index, i in enumerate(test):
+        oldsum = sum
+        sum += i
+        n += 1
+        mean = sum/(index+1)
 
-    if index > 1:
+        if index > 1:
 
-        predicted_variance[index] = predicted_variance[index - 1] + ((i - (sum / n)) * (i - (sum / n)) )
-        predicted_diff[index] = predicted_variance[index]/(n-1) - predicted_variance[index-1]/(n-2)
-        real_variance[index] = np.var(test[0:index+1])
-        real_diff[index] = real_variance[index] - real_variance[index-1]
+            predicted_variance[index] = predicted_variance[index - 1] + ((i - (sum / n)) * (i - (sum / n)) )
+            predicted_diff[index] = predicted_variance[index]/(n-1) - predicted_variance[index-1]/(n-2)
+            real_variance[index] = np.var(test[0:index+1])
+            real_diff[index] = real_variance[index] - real_variance[index-1]
 
-    else:
+        else:
 
-        real_diff[index] = 0
-        predicted_diff[index] = 0
-        predicted_variance[index] = 0
-
-plt.plot(range(len(test)), real_diff, label="real")
-plt.plot(range(len(test)), predicted_diff, label="predicted")
-plt.legend()
+            real_diff[index] = 0
+            predicted_diff[index] = 0
+            predicted_variance[index] = 0
+    real_pred_diff[idx] = real_variance[-1] - predicted_variance[-1]
+plt.yscale('linear')
+plt.plot(iter_range, real_pred_diff)
 plt.show()
-print(predicted_variance[-1]/(n-1))
-print(real_variance[-1])
+# plt.plot(range(len(test)), real_diff, label="real")
+# plt.plot(range(len(test)), predicted_diff, label="predicted")
+# plt.legend()
+# plt.show()
+# print(predicted_variance[-1]/(n-1))
+# print(real_variance[-1])
 # print(real_diff[-1])
 # print(predicted_diff[-1])
 # print(mean)
